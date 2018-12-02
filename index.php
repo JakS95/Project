@@ -2,7 +2,7 @@
 //  if(isset($_SESSION['user']){
 ///    $_SESSION['success'] = "Loged in $user";
 //  }
-include('login.php')
+include('server.php')
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,8 +25,8 @@ include('login.php')
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav"> <span class="navbar-toggler-icon"></span></button>
       <a class="navbar-brand" href="#!"> Library </a> <!--<img src="books.png" width="40" height="40" alt="nabBrand"> </a>-->
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav"> <span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto mt-2 mt-ms-0">
           <li class="nav-item">
@@ -42,7 +42,7 @@ include('login.php')
             <a class="nav-link" href="#">Contact</a>
           </li>
         </ul>
-        <?php include('errors.php'); ?> 
+        <?php include('errors.php'); ?>
         <ul class="navbar-nav navbar-right">
         <!--<form class="form-inline my-2 mx-lg-5">-->
           <li class="dropdown my-auto mr-5"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Log In </a>
