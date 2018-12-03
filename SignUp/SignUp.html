@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+    <link rel="stylesheet" href="SignUp.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <!--<script src="js/jquery.min.js"></script> -->
+    <!--<script src="js/bootstrap.min.js"></script> -->
+  </head>
+  <body>
+    <div class="container">
+      <!--<div class="row main">-->
+      <div class="mx-auto" style="width:330px">
+          <h2 class="text-center title">Library</h2>
+          <hr/>
+      </div>
+      <div class="main-login main-center">
+      <form action="insert.php" method="post">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+             <span class="input-group-text"> <i class=" fa fa-user"></i> </span>
+           </div>
+           <input type="text" class="form-control" placeholder="Enter your name" id="name" name="name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+             <span class="input-group-text"> <i class=" fa fa-envelope"></i> </span>
+           </div>
+           <input type="email" class="form-control" placeholder="Enter your email" id="email" name="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="usrname">Username:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+             <span class="input-group-text"> <i class=" fa fa-users"></i> </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Enter your username" id="usrname" name="usrname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="paswrd">Password:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+             <span class="input-group-text"> <i class=" fa fa-lock"></i> </span>
+            </div>
+            <input type="password" class="form-control" placeholder="Enter your password" id="paswrd" name="paswrd" onchange="check_pass();">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirm_paswrd">Confirm Password:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+             <span class="input-group-text"> <i class=" fa fa-lock"></i> </span>
+            </div>
+            <input type="password" class="form-control" placeholder="Confirm your Password" id="confirm_paswrd" onchange="check_pass();">
+          </div>
+        </div>
+        <!--<div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+        </div>-->
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="remember">Remember me
+          </label>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+        </div>
+        <div class="login-register">
+          <a href="#">Login</a>
+        </div>
+      </form>
+      </div>
+      <!--</div>-->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="SignUp.js">
+
+    </script>
+  </body>
+</html>
