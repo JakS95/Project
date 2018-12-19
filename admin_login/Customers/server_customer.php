@@ -106,5 +106,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     $result = mysqli_query($conn,$query);
     echo $output;
   }
+
+
 $conn->close();
 ?>
