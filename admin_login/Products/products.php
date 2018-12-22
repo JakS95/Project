@@ -76,19 +76,21 @@
           <div class="card">
             <div class="card-header" role="tab" id="headingUnfiled">
               <div class="float-left">
-                <button class="btn btn-light btn-md m-0 mr-3 p-2" title="Add new book" data-toggle="tooltip" type="button"> <i class="material-icons" style="font-size:25px;">add</i>
-                </button>
+                <span data-toggle="modal" data-target="#myModalAdd" data-backdrop="static" data-keyboard="false">
+                  <button class="btn btn-light btn-md m-0 mr-3 p-2" title="Add new book" data-toggle="tooltip" type="button"> <i class="material-icons" style="font-size:25px;">add</i>
+                  </button>
+                </span>
               </div>
               <div class="float-right">
                 <div class="search-box">
                   <i class="material-icons">search</i>
-                  <input type="text" class="form-control" placeholder="Search&hellip;">
+                  <input type="text" name="search_text" id="search_text" class="form-control" placeholder="Search&hellip;" autocomplete="off">
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <div class="table-wrapper">
-                <table class="table table-striped table-hover table-boarded">
+              <div id="table-wrapper">
+              <!--  <table class="table table-striped table-hover table-boarded">
                   <thead>
                     <tr>
                       <th>Title <i class="fa fa-sort"></i> </th>
@@ -150,7 +152,7 @@
                     </tr>
                   </tbody>
 
-                </table>
+                </table> -->
               </div>
 
             </div>
@@ -164,6 +166,7 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
@@ -174,3 +177,157 @@
     </script>
   </body>
 </html>
+
+
+
+<!-- Modal for adding new books to the library database -->
+<div id="myModalAdd" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="ModalLabel">Add Book</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+         <!--<div class="controls"> -->
+       <div class="modal-body">
+         <form id="product_form" method="post" role="form">
+
+           <div class="container">
+             <div class="row">
+               <div class="col-xl-12">
+                 <h4 class="h4 mb-4">Fill the informations about specific book</h4>
+                 <div class="controls px-3">
+
+                   <div class="row">
+                     <div class="col-md-6">
+                       <div class="form-group">
+                         <label for="form_title">Title *</label>
+                         <input id="form_title" type="text" name="title" class="form-control" placeholder="Please enter the title *">
+
+                       </div>
+                     </div>
+                     <div class="col-md-6">
+                       <div class="form-group">
+                         <label for="form_author">Author *</label>
+                         <input id="form_author" type="text" name="author" class="form-control" placeholder="Please enter the author *">
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-md-6">
+                       <div class="form-group">
+                         <label for="form_genre">Genre *</label>
+                         <input id="form_genre" type="text" name="genre" class="form-control" placeholder="Please enter the genre *">
+
+                       </div>
+                     </div>
+                     <div class="col-md-6">
+                       <div class="form-group">
+                         <label for="form_date">Date *</label>
+                         <input id="form_date" type="date" name="date" class="form-control" placeholder="Please enter the date *">
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-md-6">
+                       <div class="form-ISBN">
+                         <label for="form_ISBN">ISBN *</label>
+                         <input id="form_ISBN" type="text" name="ISBN" class="form-control" placeholder="Please enter the ISBN *">
+
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-md-12 mt-3">
+                       <div class="form-group">
+                         <label for="form_descr">Message</label>
+                         <textarea id="form_descr" class="form-control" name="short_descr" placeholder="Description about the book" rows="4"></textarea>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col-md-4">
+                       <input type="submit" class="btn btn-success" value="Save" name="add_customer" id="form_add">
+                     </div>
+                   </div>
+
+                     <!--</div>-->
+
+                 </div>
+               </div>
+             </div>
+           </div>
+
+
+         </form>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-primary" data-dismiss="modal" >Close</button>
+       </div>
+
+     </div>
+   </div>
+</div>
+
+
+<!-- Modal for View detailed book description -->
+<div id="myModalView" class="modal fade">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-header">
+    <h4 class="modal-title">Book Details</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+   </div>
+   <div class="modal-body" id="product_detail">
+
+   </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<!-- Modal for Deleting books -->
+<div id="myModalDeleting" class="modal fade">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-header">
+    <h4 class="modal-title">Report</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+   </div>
+   <div class="modal-body" id="delete_info">
+      <p>Book successfully deleted</p>
+   </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+
+
+
+<!-- Modal for Editing book informations -->
+<div id="myModalEditing" class="modal fade">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-header">
+    <h4 class="modal-title">Edit book</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+   </div>
+   <div class="modal-body" id="edit_info">
+     <form id="edit_form" method="post">
+     </form>
+   </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-primary" id="button_edit" data-dismiss="modal">Close</button>
+   </div>
+  </div>
+ </div>
+</div>

@@ -1,13 +1,9 @@
 <?php
-  //session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
   $dbname = "project";
 
-//  $user = "";
-//  $pass = "";
-  $errors = array();
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
   if(!empty($_POST)){
@@ -20,13 +16,19 @@
     $query = "INSERT INTO users (name,email,usrname,paswrd)
     VALUES('$name','$email','$usrname','$paswrd')";
     if(mysqli_query($conn,$query)){
-      $select_query = "SELECT * FROM users";
-      $result = mysqli_query($conn,$select_query);
+      if(isset($_POST['search_input'])){
+        $search = mysqli_real_escape_string($conn,$_POST["search_input"]);
+        $query = "SELECT * FROM users WHERE name LIKE '%". $search ."%' ORDER BY name ASC";
+      }
+      else{
+        $query = "SELECT * FROM users ORDER BY name ASC";
+      }
+      $result = mysqli_query($conn,$query);
       $output .="
         <table class=\"table table-striped table-hover table-boarded\">
           <thead>
             <tr>
-              <th>Name <i class=\"fa fa-sort\"></i> </th>
+              <th><a id=\"name_sort\" class=\"ASC\" >Name <i class=\"fa fa-sort-asc\"></i></a> </th>
               <th>Username</th>
               <th>Email</th>
               <th>Password</th>

@@ -1,4 +1,6 @@
 /* For pop-ups on buttons */
+
+
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip({
     //trigger : 'hover'
@@ -38,15 +40,40 @@ $(document).ready(function(){
 });
 
 /* Code for sorting the table by name */
+/*$(document).ready(function(){
+  $(document).on('click','#name_sort_search',function(){
+    var search_input;
+    $('#search_text').keyup(function(){
+      search_input = $(this).val();
+    });
+    var sort_info_search = $(this).attr("class");
+    $.ajax({
+      url:"server_customer_sort.php",
+      method:"POST",
+      data:{sort_info_search:sort_info_search,search_input:search_input},
+      success:function(data){
+        $('#table-wrapper').html(data);
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    });
+  });
+});*/
+
+
+
+
+/* Code for sorting the table by name */
 $(document).ready(function(){
   $(document).on('click','#name_sort',function(){
+    var search_input = $("#search_text").val();
     var sort_info = $(this).attr("class");
     $.ajax({
       url:"server_customer_sort.php",
       method:"POST",
-      data:{sort_info:sort_info},
+      data:{sort_info:sort_info,search_input:search_input},
       success:function(data){
         $('#table-wrapper').html(data);
+        $('[data-toggle="tooltip"]').tooltip();
       }
     });
   });
@@ -84,7 +111,7 @@ $(document).ready(function(){
        alert("Password is required");
      }
      else {
-       $.ajax({  //ajax function
+       $.ajax({  //ajax function for calling the file for adding customer
          url:"server_customer_add.php",
          method:"POST",
          data:$('#customer_form').serialize(),
@@ -109,7 +136,7 @@ $(document).ready(function(){
    $(document).on('click','#view',function(){
      var customer_view = $(this).attr("class");
      $.ajax({
-       url:"server_customer.php",
+       url:"server_customer_view_delete_edit.php",
        method:"POST",
        data:{customer_view:customer_view}, // Object
        success:function(data){
@@ -124,10 +151,12 @@ $(document).ready(function(){
 $(document).ready(function(){
    $(document).on('click','#delete',function(){
      var customer_delete = $(this).attr("class");
+     var search_input = $("#search_text").val();
+     console.log(search_input);
      $.ajax({
-       url:"server_customer.php",
+       url:"server_customer_view_delete_edit.php",
        method:"POST",
-       data:{customer_delete:customer_delete}, // Object
+       data:{customer_delete:customer_delete,search_input:search_input}, // Object
        success:function(data){
          $('#myModalDeleting').modal('show');
          $('#table-wrapper').html(data);
@@ -142,7 +171,7 @@ $(document).ready(function(){
    $(document).on('click','#edit',function(){
      var customer_edit = $(this).attr("class");
      $.ajax({
-       url:"server_customer.php",
+       url:"server_customer_view_delete_edit.php",
        method:"POST",
        data:{customer_edit:customer_edit}, // Object
        success:function(data){
@@ -160,7 +189,6 @@ $(document).ready(function(){
 /* Adding to database when done editing */
 $(document).ready(function(){
    $('#edit_form').on("submit", function(event){
-     console.log("Ne okida");
      event.preventDefault();
      if($('#name').val() == ""){
        alert("Name is required");
@@ -174,10 +202,17 @@ $(document).ready(function(){
        alert("Password is required");
      }
      else {
+       var search_input = $("#search_text").val();
+       var dataString = $('#edit_form').serializeArray(); // Array of objects from the form
        $.ajax({  //ajax function
          url:"server_customer_add.php",
          method:"POST",
-         data:$('#edit_form').serialize(),
+         //data:$('#edit_form').serialize(),
+         data:{name:dataString[0]['value'],// Sending each input form the form separately and after that sending the search_input
+              email:dataString[1]['value'],
+              usrname:dataString[2]['value'],
+              paswrd:dataString[3]['value'],
+              search_input:search_input },
          beforeSend:function(){
            $('#button_edit').val("Saving data");
          },

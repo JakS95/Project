@@ -1,12 +1,11 @@
 <?php
-//session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "project";
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "project";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
 
   if(isset($_POST["customer_view"])){
 
@@ -46,16 +45,19 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     $query = "DELETE FROM users WHERE paswrd = '".$_POST["customer_delete"]."'";
     $result = mysqli_query($conn,$query);
     if($result){
-    //  $output_problem ='Problem with deleting:'. mysqli_error($conn);
-      //$output .='Customer successfuly deleted';
-      //*$output_success = "Customer successfuly deleted !";
-      $select_query = "SELECT * FROM users";
-      $result = mysqli_query($conn,$select_query);
+      if(isset($_POST["search_input"])){
+        $search = mysqli_real_escape_string($conn,$_POST["search_input"]);
+        $query = "SELECT * FROM users WHERE name LIKE '%". $search ."%' ORDER BY name ASC";
+      }
+      else{
+        $query = "SELECT * FROM users ORDER BY name ASC";
+      }
+      $result = mysqli_query($conn,$query);
       $output .="
         <table class=\"table table-striped table-hover table-boarded\">
           <thead>
             <tr>
-              <th>Name <i class=\"fa fa-sort\"></i> </th>
+              <th><a id=\"name_sort\" class=\"ASC\" >Name <i class=\"fa fa-sort-asc\"></i></a> </th>
               <th>Username</th>
               <th>Email</th>
               <th>Password</th>
@@ -83,7 +85,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
   }
 
   if(isset($_POST["customer_edit"])){
-
     $output = '';
     $query = "SELECT * FROM users WHERE paswrd = '".$_POST["customer_edit"]."'";
     $result = mysqli_query($conn,$query);

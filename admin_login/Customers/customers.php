@@ -9,6 +9,7 @@
     <title>Library</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" href="customers.css">
@@ -90,7 +91,7 @@
               <div class="float-right">
                 <div class="search-box">
                   <i class="material-icons">search</i>
-                  <input type="text" name="search_text" id="search_text" class="form-control" placeholder="Search&hellip;">
+                  <input type="text" name="search_text" id="search_text" class="form-control" placeholder="Search&hellip;" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -216,6 +217,7 @@
 </div>
 
 
+<!-- Modal to View detailed customer description -->
 
 <div id="myModal1" class="modal fade">
  <div class="modal-dialog">
@@ -253,7 +255,7 @@
 </div>
 
 
-
+<!-- Modal for Editing customer informations -->
 <div id="myModalEditing" class="modal fade">
  <div class="modal-dialog">
   <div class="modal-content">
